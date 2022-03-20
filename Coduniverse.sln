@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.WebApi", "src\Coduniverse.WebApi\Coduniverse.WebApi.csproj", "{50AE6723-8B08-4E77-81A9-19738984E630}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Domain", "src\Coduniverse.Domain\Coduniverse.Domain.csproj", "{412C7DB4-DA31-40B0-BF4C-203228BC6E40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Infrastructure.EF", "src\Coduniverse.Infrastructure.EF\Coduniverse.Infrastructure.EF.csproj", "{30D8AAA8-5398-4AC9-9F76-ACA220F47E6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Application.Abstractions", "src\Coduniverse.Application.Abstractions\Coduniverse.Application.Abstractions.csproj", "{A9911A31-5BA6-469F-B108-3DF795BFC745}"
+	ProjectSection(ProjectDependencies) = postProject
+		{412C7DB4-DA31-40B0-BF4C-203228BC6E40} = {412C7DB4-DA31-40B0-BF4C-203228BC6E40}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Application.Services", "src\Coduniverse.Application.Services\Coduniverse.Application.Services.csproj", "{EE1A21A0-72BB-4ED0-B30D-EE3BCFB70353}"
+	ProjectSection(ProjectDependencies) = postProject
+		{412C7DB4-DA31-40B0-BF4C-203228BC6E40} = {412C7DB4-DA31-40B0-BF4C-203228BC6E40}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Infrastructure.Abstractions", "src\Coduniverse.Infrastructure.Abstractions\Coduniverse.Infrastructure.Abstractions.csproj", "{129C037B-7A93-4038-B83E-45CB56085ED3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Infrastructure.Extentions", "src\Coduniverse.Infrastructure.Extentions\Coduniverse.Infrastructure.Extentions.csproj", "{A0AAD04D-1909-46A4-9319-9D48B673A1F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coduniverse.Client", "src\Coduniverse.Client\Coduniverse.Client.csproj", "{452F812F-213C-4A4B-A46D-C18EA61465E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50AE6723-8B08-4E77-81A9-19738984E630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50AE6723-8B08-4E77-81A9-19738984E630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50AE6723-8B08-4E77-81A9-19738984E630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50AE6723-8B08-4E77-81A9-19738984E630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{412C7DB4-DA31-40B0-BF4C-203228BC6E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412C7DB4-DA31-40B0-BF4C-203228BC6E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412C7DB4-DA31-40B0-BF4C-203228BC6E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412C7DB4-DA31-40B0-BF4C-203228BC6E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D8AAA8-5398-4AC9-9F76-ACA220F47E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D8AAA8-5398-4AC9-9F76-ACA220F47E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D8AAA8-5398-4AC9-9F76-ACA220F47E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D8AAA8-5398-4AC9-9F76-ACA220F47E6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9911A31-5BA6-469F-B108-3DF795BFC745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9911A31-5BA6-469F-B108-3DF795BFC745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9911A31-5BA6-469F-B108-3DF795BFC745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9911A31-5BA6-469F-B108-3DF795BFC745}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1A21A0-72BB-4ED0-B30D-EE3BCFB70353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1A21A0-72BB-4ED0-B30D-EE3BCFB70353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1A21A0-72BB-4ED0-B30D-EE3BCFB70353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1A21A0-72BB-4ED0-B30D-EE3BCFB70353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{129C037B-7A93-4038-B83E-45CB56085ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129C037B-7A93-4038-B83E-45CB56085ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129C037B-7A93-4038-B83E-45CB56085ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129C037B-7A93-4038-B83E-45CB56085ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0AAD04D-1909-46A4-9319-9D48B673A1F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0AAD04D-1909-46A4-9319-9D48B673A1F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0AAD04D-1909-46A4-9319-9D48B673A1F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0AAD04D-1909-46A4-9319-9D48B673A1F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452F812F-213C-4A4B-A46D-C18EA61465E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452F812F-213C-4A4B-A46D-C18EA61465E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452F812F-213C-4A4B-A46D-C18EA61465E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452F812F-213C-4A4B-A46D-C18EA61465E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FFF4F4DB-23B1-4426-AAEC-283FADC79DD2}
+	EndGlobalSection
+EndGlobal
