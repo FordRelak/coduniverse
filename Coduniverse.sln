@@ -23,7 +23,26 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Infrastructure.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Infrastructure.Extentions", "src\Coduniverse.Infrastructure.Extentions\Coduniverse.Infrastructure.Extentions.csproj", "{A0AAD04D-1909-46A4-9319-9D48B673A1F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coduniverse.Client", "src\Coduniverse.Client\Coduniverse.Client.csproj", "{452F812F-213C-4A4B-A46D-C18EA61465E2}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Coduniverse.Client", "src\Coduniverse.Client\", "{7A2401E7-B325-419B-BB2B-9A8A8DE2DBB7}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54597"
+		Debug.AspNetCompiler.PhysicalPath = "src\Coduniverse.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54597\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54597"
+		Release.AspNetCompiler.PhysicalPath = "src\Coduniverse.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54597\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "54597"
+		SlnRelativePath = "src\Coduniverse.Client\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +78,10 @@ Global
 		{A0AAD04D-1909-46A4-9319-9D48B673A1F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0AAD04D-1909-46A4-9319-9D48B673A1F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0AAD04D-1909-46A4-9319-9D48B673A1F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{452F812F-213C-4A4B-A46D-C18EA61465E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{452F812F-213C-4A4B-A46D-C18EA61465E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{452F812F-213C-4A4B-A46D-C18EA61465E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{452F812F-213C-4A4B-A46D-C18EA61465E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2401E7-B325-419B-BB2B-9A8A8DE2DBB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2401E7-B325-419B-BB2B-9A8A8DE2DBB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2401E7-B325-419B-BB2B-9A8A8DE2DBB7}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2401E7-B325-419B-BB2B-9A8A8DE2DBB7}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
