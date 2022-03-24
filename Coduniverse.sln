@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coduniverse.Infrastructure.
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Coduniverse.Client", "src\Coduniverse.Client\", "{7A2401E7-B325-419B-BB2B-9A8A8DE2DBB7}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_54597"
 		Debug.AspNetCompiler.PhysicalPath = "src\Coduniverse.Client\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54597\"
