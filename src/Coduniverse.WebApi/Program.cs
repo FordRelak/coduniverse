@@ -11,6 +11,8 @@ var config = builder.Configuration;
 services.AddInfrasctuctureEf(config);
 services.AddApplicationServices(config);
 
+services.AddCors();
+
 services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 services.AddControllers().AddNewtonsoftJson(opt =>
@@ -24,6 +26,9 @@ if(environment.IsDevelopment())
     app.ApplyMigrations();
     app.UseDeveloperExceptionPage();
 }
+
+app.UseCors(config => config.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowCredentials().AllowAnyMethod());
+
 app.UseHttpsRedirection();
 app.UseRouting();
 
@@ -31,12 +36,7 @@ app.MapControllers();
 
 app.UseSpa(conf =>
 {
-    string strategy = config.GetValue<string>("DevTools:ConnectionStrategy");
-    if(strategy == "proxy")
-    {
-        conf.UseProxyToSpaDevelopmentServer("http://localhost:4200/");
-    }
-    else if(strategy == "managed")
+    if(environment.IsProduction())
     {
         conf.Options.SourcePath = "../Coduniverse.Client";
         conf.UseAngularCliServer("start");

@@ -8,6 +8,10 @@ namespace Coduniverse.Application.Services.Utils.AutoMapperProfiles
     {
         public ServiceProfiles()
         {
+            CreateMap<StarSystemDTO, StarSystem>()
+                .ReverseMap();
+            CreateMap<SpaceObject, SpaceObjectDTO>()
+                .ForMember(dst => dst.TypeName, opt => opt.MapFrom(src => src.Type.ToString()));
             CreateMap<SpaceObjectDTO, SpaceObject>();
         }
     }

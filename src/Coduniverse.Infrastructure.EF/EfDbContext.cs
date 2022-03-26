@@ -46,6 +46,8 @@ namespace Coduniverse.Infrastructure.EF
                 CreatedAt = time,
                 UpdatedAt = time,
                 CenterMassId = solarSystemGuid,
+                Diameter = RandomNumberGenerator.GetInt32(int.MaxValue),
+                Mass = RandomNumberGenerator.GetInt32(int.MaxValue),
             };
 
             var starSystem = new
@@ -74,6 +76,8 @@ namespace Coduniverse.Infrastructure.EF
                         StarSystemId = starSystem.Id,
                         CreatedAt = time,
                         UpdatedAt = time,
+                        Diameter = RandomNumberGenerator.GetInt32(int.MaxValue),
+                        Mass = RandomNumberGenerator.GetInt32(int.MaxValue),
                     },
                     new
                     {
@@ -84,6 +88,8 @@ namespace Coduniverse.Infrastructure.EF
                         StarSystemId = starSystem.Id,
                         CreatedAt = time,
                         UpdatedAt = time,
+                        Diameter = RandomNumberGenerator.GetInt32(int.MaxValue),
+                        Mass = RandomNumberGenerator.GetInt32(int.MaxValue),
                     },
                     new
                     {
@@ -94,6 +100,8 @@ namespace Coduniverse.Infrastructure.EF
                         StarSystemId = starSystem.Id,
                         CreatedAt = time,
                         UpdatedAt = time,
+                        Diameter = RandomNumberGenerator.GetInt32(int.MaxValue),
+                        Mass = RandomNumberGenerator.GetInt32(int.MaxValue),
                     },
                     new
                     {
@@ -104,6 +112,8 @@ namespace Coduniverse.Infrastructure.EF
                         StarSystemId = starSystem.Id,
                         CreatedAt = time,
                         UpdatedAt = time,
+                        Diameter = RandomNumberGenerator.GetInt32(int.MaxValue),
+                        Mass = RandomNumberGenerator.GetInt32(int.MaxValue),
                     },
                     new
                     {
@@ -114,6 +124,8 @@ namespace Coduniverse.Infrastructure.EF
                         StarSystemId = starSystem.Id,
                         CreatedAt = time,
                         UpdatedAt = time,
+                        Diameter = RandomNumberGenerator.GetInt32(int.MaxValue),
+                        Mass = RandomNumberGenerator.GetInt32(int.MaxValue),
                     }
                 );
 

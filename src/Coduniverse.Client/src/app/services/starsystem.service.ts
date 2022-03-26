@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from "../../environments/environment";
+import { StarSystem } from '../models/star-system';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SpaceobjectService {
-  url = environment.apiUrl + "spaceobject";
+export class StarSystemService {
+  url = environment.apiUrl + "/starsystem";
   constructor(private http: HttpClient) { }
 
-  getSpaceObjects() {
-    return this.http.get(this.url);
+  getStarSystems() {
+    return this.http.get<StarSystem[]>(this.url);
   }
 }

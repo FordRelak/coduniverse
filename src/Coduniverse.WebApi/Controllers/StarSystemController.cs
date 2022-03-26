@@ -23,7 +23,10 @@ namespace Coduniverse.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            return Ok(await _services.GetStarSystemAsync(id));
+            var dto = await _services.GetStarSystemAsync(id);
+            if(dto == null)
+                return NotFound();
+            return Ok();
         }
     }
 }

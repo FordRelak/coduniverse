@@ -20,32 +20,32 @@ namespace Coduniverse.Application.Services
 
         #region StarSystem
 
-        public async Task<IEnumerable<StarSystem>> GetAllStarSystemsAsync(bool includeSpaceObjects = true)
+        public async Task<IEnumerable<StarSystemDTO>> GetAllStarSystemsAsync(bool includeSpaceObjects = true)
         {
             if(includeSpaceObjects)
-                return await _repositories.StarSystem.GetAsync(null, i => i.SpaceObjects, i => i.CenterMass);
-            return await _repositories.StarSystem.GetAsync(null, i => i.CenterMass);
+                return _mapper.Map<List<StarSystemDTO>>(await _repositories.StarSystem.GetAsync(null, i => i.SpaceObjects, i => i.CenterMass));
+            return _mapper.Map<List<StarSystemDTO>>(await _repositories.StarSystem.GetAsync(null, i => i.CenterMass));
         }
 
-        public async Task<StarSystem> GetStarSystemAsync(Guid id, bool includeSpaceObjects = true)
+        public async Task<StarSystemDTO> GetStarSystemAsync(Guid id, bool includeSpaceObjects = true)
         {
             if(includeSpaceObjects)
-                return await _repositories.StarSystem.GetAsync(id, i => i.SpaceObjects);
-            return await _repositories.StarSystem.GetAsync(id, i => i.CenterMass);
+                return _mapper.Map<StarSystemDTO>(await _repositories.StarSystem.GetAsync(id, i => i.SpaceObjects));
+            return _mapper.Map<StarSystemDTO>(await _repositories.StarSystem.GetAsync(id, i => i.CenterMass));
         }
 
-        public async Task<IEnumerable<StarSystem>> GetStarSystemsByPredicateAsync(Expression<Func<StarSystem, bool>> predicate, bool includeSpaceObjects = true)
+        public async Task<IEnumerable<StarSystemDTO>> GetStarSystemsByPredicateAsync(Expression<Func<StarSystem, bool>> predicate, bool includeSpaceObjects = true)
         {
             if(includeSpaceObjects)
-                return await _repositories.StarSystem.GetAsync(predicate, i => i.SpaceObjects);
-            return await _repositories.StarSystem.GetAsync(predicate);
+                return _mapper.Map<List<StarSystemDTO>>(await _repositories.StarSystem.GetAsync(predicate, i => i.SpaceObjects));
+            return _mapper.Map<List<StarSystemDTO>>(await _repositories.StarSystem.GetAsync(predicate));
         }
 
         #endregion StarSystem
 
         #region SpaceObject
 
-        public async Task<SpaceObject> CreateSpaceObject(SpaceObjectDTO spaceObjectDto)
+        public async Task<SpaceObjectDTO> CreateSpaceObject(SpaceObjectDTO spaceObjectDto)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace Coduniverse.Application.Services
                     return null;
 
                 var newSpaceObject = _mapper.Map<SpaceObject>(spaceObjectDto);
-                var starSystem = await GetStarSystemAsync(spaceObjectDto.StarSystemId);
+                var starSystem = await _repositories.StarSystem.GetAsync(spaceObjectDto.StarSystemId, i => i.SpaceObjects);
 
                 await BeforeSaveAction();
 
@@ -66,7 +66,7 @@ namespace Coduniverse.Application.Services
 
                 await AfterSaveAction();
 
-                return newSpaceObject;
+                return _mapper.Map<SpaceObjectDTO>(newSpaceObject);
             }
             catch(Exception)
             {
@@ -75,18 +75,18 @@ namespace Coduniverse.Application.Services
             }
         }
 
-        public async Task<IEnumerable<SpaceObject>> GetAllSpaceObjectAsync(bool includeStarSystem = true)
+        public async Task<IEnumerable<SpaceObjectDTO>> GetAllSpaceObjectAsync(bool includeStarSystem = true)
         {
             if(includeStarSystem)
-                return await _repositories.SpaceObject.GetAsync(null, i => i.StarSystem);
-            return await _repositories.SpaceObject.GetAsync(null);
+                return _mapper.Map<List<SpaceObjectDTO>>(await _repositories.SpaceObject.GetAsync(null, i => i.StarSystem));
+            return _mapper.Map<List<SpaceObjectDTO>>(await _repositories.SpaceObject.GetAsync(null));
         }
 
-        public async Task<SpaceObject> GetSpaceObjectAsync(Guid id, bool includeStarSystem = true)
+        public async Task<SpaceObjectDTO> GetSpaceObjectAsync(Guid id, bool includeStarSystem = true)
         {
             if(includeStarSystem)
-                return await _repositories.SpaceObject.GetAsync(id, i => i.StarSystem);
-            return await _repositories.SpaceObject.GetAsync(id);
+                return _mapper.Map<SpaceObjectDTO>(await _repositories.SpaceObject.GetAsync(id, i => i.StarSystem));
+            return _mapper.Map<SpaceObjectDTO>(await _repositories.SpaceObject.GetAsync(id));
         }
 
         public async Task<SpaceObjectDTO> UpdateSpaceObject(Guid id, SpaceObjectDTO spaceObjectDTO)

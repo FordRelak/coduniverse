@@ -1,4 +1,6 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { StarSystem } from './models/star-system';
+import { StarSystemService } from './services/starsystem.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +8,6 @@ import { Component, Injectable } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 
-@Injectable()
 export class AppComponent {
 
 }

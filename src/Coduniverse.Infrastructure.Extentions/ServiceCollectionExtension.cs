@@ -11,8 +11,15 @@ namespace Coduniverse.Infrastructure.Extentions
     {
         public static IServiceCollection AddInfrasctuctureEf(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<EfDbContext>(o => o.UseNpgsql(configuration.GetConnectionString("PosgresConnectionString"))
-                                                     .EnableSensitiveDataLogging());
+            services.AddDbContext<EfDbContext>(o =>
+            {
+                o.UseNpgsql(configuration.GetConnectionString("PosgresConnectionString"));
+
+#if DEBUG
+                o.EnableSensitiveDataLogging();
+#endif
+
+            });
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWorkRepository, UOWRepository>();
             return services;

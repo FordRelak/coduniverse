@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body text-center">
-        <b> <i>Jupiter</i> </b>
+        <b> <i>{{spaceObject.name}}</i> </b>
     </div>
     <ul class="list-group">
         <li class="list-group-item d-inline-flex">
@@ -8,7 +8,7 @@
                 <b>Age</b>
             </div>
             <div class="col d-flex">
-                <span class="mx-auto">1123</span>
+                <span class="mx-auto">{{spaceObject.age}}</span>
             </div>
         </li>
         <li class="list-group-item d-inline-flex">
@@ -16,7 +16,7 @@
                 <b>Type</b>
             </div>
             <div class="col d-flex">
-                <span class="mx-auto">1123</span>
+                <span class="mx-auto">{{spaceObject.typeName}}</span>
             </div>
         </li>
         <li class="list-group-item d-inline-flex">
@@ -24,16 +24,16 @@
                 <b>Mass</b>
             </div>
             <div class="col d-flex">
-                <span class="mx-auto">1123</span>
+                <span class="mx-auto">{{spaceObject.mass}}</span>
             </div>
         </li>
     </ul>
     <div class="card-body">
         <div class="col-12">
-            <button class="btn btn-warning w-100">Edit</button>
+            <a [routerLink]="['/form', {id: spaceObject.id, type : 'spaceObject'}]" class="btn btn-warning w-100">Edit</a>
         </div>
         <div class="col-12 mt-3">
-            <button class="btn btn-danger w-100">Delete</button>
+            <button (click)="remove()" class="btn btn-danger w-100">Delete</button>
         </div>
     </div>
 </div>

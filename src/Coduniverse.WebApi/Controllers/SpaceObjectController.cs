@@ -39,8 +39,12 @@ namespace Coduniverse.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            return Ok(await _services.GetSpaceObjectAsync(id));
+            var dto = await _services.GetSpaceObjectAsync(id);
+            if (dto == null)
+                return NotFound();
+            return Ok();
         }
+
         [HttpPut]
         public async Task<IActionResult> Update(SpaceObjectInput model)
         {
