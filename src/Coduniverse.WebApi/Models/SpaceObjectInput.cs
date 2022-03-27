@@ -18,5 +18,13 @@ namespace Coduniverse.WebApi.Models
 
         [Required]
         public SpaceObjectType Type { get; set; }
+
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int Diameter { get; set; }
+
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int Mass { get; set; }
     }
 }

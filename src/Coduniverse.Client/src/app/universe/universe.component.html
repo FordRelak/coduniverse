@@ -1,0 +1,4 @@
+<a routerLink="/form" [queryParams]="{'type': 'star', 'action': 'add' }" class="btn btn-info">Add star system</a>
+<section *ngFor="let starSystem of starSystems">
+    <app-star-system [starSystem]="starSystem" (deleteEvent)="deleteStarSystem($event)"></app-star-system>
+</section>

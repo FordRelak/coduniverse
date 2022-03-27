@@ -42,7 +42,7 @@ namespace Coduniverse.WebApi.Controllers
             var dto = await _services.GetSpaceObjectAsync(id);
             if (dto == null)
                 return NotFound();
-            return Ok();
+            return Ok(dto);
         }
 
         [HttpPut]

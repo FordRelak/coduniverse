@@ -1,7 +1,14 @@
-<h3 class="text-center">{{starSystem?.name}}</h3>
-<a routerLink="/form" class="btn btn-info">Add</a>
+<h3 class="mt-5 text-center fw-bold">{{starSystem?.name}}</h3>
+<a routerLink="/form" [queryParams]="{ 'starId': starSystem?.id, 'type': 'object', 'action': 'add' }" class="btn btn-info">Add space object</a>
+<a routerLink="/form" [queryParams]="{ 'id': starSystem?.id, 'type': 'star', 'action': 'edit' }" class="ms-3 btn btn-info">Edit</a>
+<button (click)="deleteStarSystem()" class="ms-3 btn btn-danger">Delete</button>
 <div class="row gy-2 gx-2 mt-2">
-    <article class="col-xl-3 col-md-4 col-sm-6 col-12" *ngFor="let spaceObject of starSystem?.spaceObjects">
-        <app-spaceobject [spaceObject]="spaceObject" (eventRemove)="removeObject($event)"></app-spaceobject>
+    <article *ngIf="starSystem?.centerMass != null" class="col-xl-3 col-md-4 col-sm-6 col-12">
+        <app-spaceobject [spaceObject]="starSystem?.centerMass" [isCenterMass]="true" (eventRemove)="removeObject($event)" (starEvent)="giveStar($event)"></app-spaceobject>
     </article>
+    <ng-container *ngFor="let spaceObject of starSystem?.spaceObjects">
+        <article *ngIf="spaceObject.id != starSystem?.centerMass?.id" class="col-xl-3 col-md-4 col-sm-6 col-12">
+            <app-spaceobject [spaceObject]="spaceObject" [isCenterMass]="false" (eventRemove)="removeObject($event)" (starEvent)="giveStar($event)"></app-spaceobject>
+        </article>
+    </ng-container>
 </div>

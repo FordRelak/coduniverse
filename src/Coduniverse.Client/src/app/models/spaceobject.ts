@@ -8,6 +8,8 @@ export class Spaceobject {
         public type: number,
         public typeName: string,
         public starSystemId: string,
-        public mass: number
+        public mass: number,
+        public diameter: number,
+        public isCenterMass: boolean
     ) { }
 }

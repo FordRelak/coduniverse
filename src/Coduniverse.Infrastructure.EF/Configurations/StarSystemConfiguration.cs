@@ -13,12 +13,12 @@ namespace Coduniverse.Infrastructure.EF.Configurations
             builder.HasKey(entity => entity.Id);
 
             builder.HasMany(starSystem => starSystem.SpaceObjects)
-                .WithOne(spaceObject => spaceObject.StarSystem);
+                .WithOne(spaceObject => spaceObject.StarSystem).OnDelete(DeleteBehavior.Cascade);
 
-            builder.Property<Guid>("CenterMassId");
+
+            builder.Property<Guid?>("CenterMassId");
             builder.HasOne(s => s.CenterMass)
-                .WithOne()
-                .HasForeignKey(typeof(SpaceObject), "CenterMassId");
+                .WithMany().HasForeignKey("CenterMassId");
         }
     }
 }

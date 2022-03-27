@@ -13,4 +13,24 @@ export class StarSystemService {
   getStarSystems() {
     return this.http.get<StarSystem[]>(this.url);
   }
+
+  getStarSystem(id: string) {
+    return this.http.get<any>(this.url + `/${id}`);
+  }
+
+  makeCenterMass(data: any) {
+    return this.http.post(this.url + '/centermass', data);
+  }
+
+  addOrUpdate(data: any) {
+    if (data.id == null) {
+      return this.http.post(this.url, data);
+    }
+    else {
+      return this.http.put(this.url, data);
+    }
+  }
+  delete(id: string) {
+    return this.http.delete(this.url + `/${id}`);
+  }
 }

@@ -18,6 +18,8 @@ namespace Coduniverse.Infrastructure.EF
             if(predicate is not null)
                 query = query.Where(predicate);
 
+            query = query.OrderByDescending(x => x.UpdatedAt);
+
             return query;
         }
     }

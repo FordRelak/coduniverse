@@ -30,7 +30,7 @@ namespace Coduniverse.Application.Services
         public async Task<StarSystemDTO> GetStarSystemAsync(Guid id, bool includeSpaceObjects = true)
         {
             if(includeSpaceObjects)
-                return _mapper.Map<StarSystemDTO>(await _repositories.StarSystem.GetAsync(id, i => i.SpaceObjects));
+                return _mapper.Map<StarSystemDTO>(await _repositories.StarSystem.GetAsync(id, i => i.SpaceObjects, i => i.CenterMass));
             return _mapper.Map<StarSystemDTO>(await _repositories.StarSystem.GetAsync(id, i => i.CenterMass));
         }
 
@@ -39,6 +39,94 @@ namespace Coduniverse.Application.Services
             if(includeSpaceObjects)
                 return _mapper.Map<List<StarSystemDTO>>(await _repositories.StarSystem.GetAsync(predicate, i => i.SpaceObjects));
             return _mapper.Map<List<StarSystemDTO>>(await _repositories.StarSystem.GetAsync(predicate));
+        }
+
+        public async Task MakeSpaceObjectCenterMass(Guid spaceObjectid, Guid starSystemId)
+        {
+            var starSystem = await _repositories.StarSystem.GetAsync(starSystemId, i => i.CenterMass);
+            var spaceObject = await _repositories.SpaceObject.GetAsync(spaceObjectid);
+
+            if(spaceObject != null && starSystem != null)
+            {
+                try
+                {
+                    await BeforeSaveAction();
+                    starSystem.CenterMass = spaceObject;
+                    await _repositories.StarSystem.UpdateAsync(starSystem);
+                    await AfterSaveAction();
+                }
+                catch(Exception)
+                {
+                    await ErrorSaveAction();
+                    throw;
+                }
+            }
+        }
+
+        public async Task<StarSystemDTO> UpdateStarSystem(Guid id, StarSystemDTO starSystemDTO)
+        {
+            try
+            {
+                if(starSystemDTO is null)
+                    throw new ArgumentNullException(nameof(starSystemDTO));
+
+                if(id == Guid.Empty)
+                    return null;
+
+                var starSystem = await _repositories.StarSystem.GetAsync(id);
+                if(starSystem is null)
+                    return null;
+
+                await BeforeSaveAction();
+
+                var update = _mapper.Map(starSystemDTO, starSystem);
+                await _repositories.StarSystem.UpdateAsync(update);
+
+                await AfterSaveAction();
+
+                return starSystemDTO;
+            }
+            catch(Exception)
+            {
+                await ErrorSaveAction();
+                throw;
+            }
+        }
+
+        public async Task<StarSystemDTO> CreateStarSystem(StarSystemDTO starSystemDTO)
+        {
+            if(starSystemDTO is null)
+            {
+                throw new ArgumentNullException(nameof(starSystemDTO));
+            }
+
+            var newStarSystem = _mapper.Map<StarSystem>(starSystemDTO);
+            try
+            {
+                await BeforeSaveAction();
+                await _repositories.StarSystem.InsertAsync(newStarSystem);
+                await AfterSaveAction();
+                return _mapper.Map<StarSystemDTO>(newStarSystem);
+            }
+            catch(Exception)
+            {
+                await ErrorSaveAction();
+                throw;
+            }
+
+        }
+
+        public async Task DeleteStarSystemAsync(Guid id)
+        {
+            if(id == Guid.Empty)
+                return;
+
+            var starSystem = await _repositories.StarSystem.GetAsync(id);
+            if(starSystem is null)
+                return;
+
+            await _repositories.StarSystem.Remove(starSystem);
+            return;
         }
 
         #endregion StarSystem

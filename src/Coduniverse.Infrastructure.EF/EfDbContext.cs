@@ -45,7 +45,6 @@ namespace Coduniverse.Infrastructure.EF
                 StarSystemId = solarSystemGuid,
                 CreatedAt = time,
                 UpdatedAt = time,
-                CenterMassId = solarSystemGuid,
                 Diameter = RandomNumberGenerator.GetInt32(int.MaxValue),
                 Mass = RandomNumberGenerator.GetInt32(int.MaxValue),
             };

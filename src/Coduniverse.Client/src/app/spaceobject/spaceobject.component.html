@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-body text-center">
-        <b> <i>{{spaceObject.name}}</i> </b>
+        <b> <i>{{spaceObject?.name}}</i> </b>
+        <i *ngIf="isCenter === true" class="ms-3 bi bi-star"></i>
     </div>
     <ul class="list-group">
         <li class="list-group-item d-inline-flex">
@@ -8,7 +9,7 @@
                 <b>Age</b>
             </div>
             <div class="col d-flex">
-                <span class="mx-auto">{{spaceObject.age}}</span>
+                <span class="mx-auto">{{spaceObject?.age}}</span>
             </div>
         </li>
         <li class="list-group-item d-inline-flex">
@@ -16,7 +17,7 @@
                 <b>Type</b>
             </div>
             <div class="col d-flex">
-                <span class="mx-auto">{{spaceObject.typeName}}</span>
+                <span class="mx-auto">{{spaceObject?.typeName}}</span>
             </div>
         </li>
         <li class="list-group-item d-inline-flex">
@@ -24,13 +25,16 @@
                 <b>Mass</b>
             </div>
             <div class="col d-flex">
-                <span class="mx-auto">{{spaceObject.mass}}</span>
+                <span class="mx-auto">{{spaceObject?.mass}}</span>
             </div>
         </li>
     </ul>
     <div class="card-body">
-        <div class="col-12">
-            <a [routerLink]="['/form', {id: spaceObject.id, type : 'spaceObject'}]" class="btn btn-warning w-100">Edit</a>
+        <div *ngIf="isCenter === false" class="col-12 mt-3">
+            <button (click)="makeCenterMass()" class="btn btn-success w-100">GIVE STAR!!!!!</button>
+        </div>
+        <div class="col-12 mt-3">
+            <a [routerLink]="['/form']" [queryParams]="{'id' : spaceObject?.id, 'starId': spaceObject?.starSystemId, 'action' : 'edit', 'type': 'object'}" class="btn btn-warning w-100">Edit</a>
         </div>
         <div class="col-12 mt-3">
             <button (click)="remove()" class="btn btn-danger w-100">Delete</button>

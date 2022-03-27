@@ -1,44 +1,87 @@
-<form class="mt-4 bg-light border border-2 border-dark rounded-3 p-4">
+<form [formGroup]="spaceObjectForm" (ngSubmit)="addOrUpdate()" class="mt-4 bg-light border border-2 border-dark rounded-3 p-4">
     <div class="row mb-3">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputEmail3">
+            <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <div *ngIf="spaceObjectForm.controls['name'].invalid && (spaceObjectForm.controls['name'].dirty || spaceObjectForm.controls['name'].touched)" class="alert alert-danger">
+            <div *ngIf="spaceObjectForm.controls['name'].errors?.['required']">
+                Name is required.
+            </div>
         </div>
     </div>
     <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Age</label>
+        <label for="age" class="col-sm-2 col-form-label">Age</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="inputPassword3">
+            <input type="number" class="form-control" id="age" formControlName="age">
+        </div>
+        <div *ngIf="spaceObjectForm.controls['age'].invalid && (spaceObjectForm.controls['age'].dirty || spaceObjectForm.controls['age'].touched)" class="alert alert-danger">
+            <div *ngIf="spaceObjectForm.controls['age'].errors?.['required']">
+                age is required.
+            </div>
+            <div *ngIf="spaceObjectForm.controls['age'].errors?.['max']">
+                age must be less 2147483647.
+            </div>
+            <div *ngIf="spaceObjectForm.controls['age'].errors?.['min']">
+                negative age? seriosly?!?!.
+            </div>
         </div>
     </div>
-    <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Diameter</label>
+    <div class="row mb-3" *ngIf="type === 'object'">
+        <label for="diameter" class="col-sm-2 col-form-label">Diameter</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="inputPassword3">
+            <input type="number" class="form-control" id="diameter" formControlName="diameter">
+        </div>
+        <div *ngIf="spaceObjectForm.controls['diameter'].invalid && (spaceObjectForm.controls['diameter'].dirty || spaceObjectForm.controls['diameter'].touched)" class="alert alert-danger">
+            <div *ngIf="spaceObjectForm.controls['diameter'].errors?.['required']">
+                diameter is required.
+            </div>
+            <div *ngIf="spaceObjectForm.controls['diameter'].errors?.['max']">
+                diameter must be less 2147483647.
+            </div>
+            <div *ngIf="spaceObjectForm.controls['diameter'].errors?.['min']">
+                negative diameter? seriosly?!?!.
+            </div>
         </div>
     </div>
-    <div class="row mb-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Mass</label>
+    <div class="row mb-3" *ngIf="type === 'object'">
+        <label for="mass" class="col-sm-2 col-form-label">Mass</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" id="inputPassword3">
+            <input type="number" class="form-control" id="mass" formControlName="mass">
+        </div>
+        <div *ngIf="spaceObjectForm.controls['mass'].invalid && (spaceObjectForm.controls['mass'].dirty || spaceObjectForm.controls['mass'].touched)" class="alert alert-danger">
+            <div *ngIf="spaceObjectForm.controls['mass'].errors?.['required']">
+                mass is required.
+            </div>
+            <div *ngIf="spaceObjectForm.controls['mass'].errors?.['max']">
+                mass must be less 2147483647.
+            </div>
+            <div *ngIf="spaceObjectForm.controls['mass'].errors?.['min']">
+                negative mass? seriosly?!?!.
+            </div>
         </div>
     </div>
-    <fieldset class="row mb-3">
+    <fieldset class="row mb-3" *ngIf="type === 'object'">
         <legend class="col-form-label col-sm-2 pt-0">Type</legend>
         <div class="col-sm-10">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                <label class="form-check-label" for="gridRadios1">
+                <input class="form-check-input" type="radio" name="type" id="type_planet" value="2" formControlName="type">
+                <label class="form-check-label" for="type_planet">
                     Planet
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                <label class="form-check-label" for="gridRadios2">
+                <input class="form-check-input" type="radio" name="type" id="type_blackhole" value="1" formControlName="type">
+                <label class="form-check-label" for="type_blackhole">
                     Blackhole
                 </label>
             </div>
         </div>
+        <div *ngIf="spaceObjectForm.controls['type'].invalid && (spaceObjectForm.controls['type'].dirty || spaceObjectForm.controls['type'].touched)" class="alert alert-danger">
+            <div *ngIf="spaceObjectForm.controls['type'].errors?.['required']">
+                type is required.
+            </div>
+        </div>
     </fieldset>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">{{action}}</button>
 </form>

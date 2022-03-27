@@ -9,6 +9,7 @@ namespace Coduniverse.WebApi.Utils.AutoMapperProfiles
         public InputModelProfile()
         {
             CreateMap<SpaceObjectInput, SpaceObjectDTO>();
+            CreateMap<StarSystemInput, StarSystemDTO>();
         }
     }
 }
