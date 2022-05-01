@@ -44,3 +44,5 @@ app.UseSpa(conf =>
 });
 
 app.Run();
+
+public partial class Program { }
